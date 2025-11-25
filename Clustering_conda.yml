@@ -16,18 +16,18 @@ software_environments:
     description: "CRAN R environment"
     conda: envs/cran.yml
     envmodule: cran
-metric_collectors:
-  - id: plotting
-    name: "Single-backend metric collector."
-    software_environment: "cran"
-    repository:
-      url: https://github.com/imallona/clustering_report
-      commit: bbb9d56
-    inputs:
-      - metrics.scores
-    outputs:
-      - id: plotting.html
-        path: "{input}/{name}/plotting_report.html"
+# metric_collectors:
+#   - id: plotting
+#     name: "Single-backend metric collector."
+#     software_environment: "cran"
+#     repository:
+#       url: https://github.com/imallona/clustering_report
+#       commit: bbb9d56
+#     inputs:
+#       - metrics.scores
+#     outputs:
+#       - id: plotting.html
+#         path: "{input}/{name}/plotting_report.html"
 stages:
   ## clustbench data ##########################################################
 
@@ -93,29 +93,29 @@ stages:
   #   outputs:
   #     - id: analysis.prediction
   #       path: "{input}/{stage}/{module}/{params}/{dataset}.labels.gz"
-  # - id: metrics
-  #   modules:
-  #     - id: flow_metrics
-  #       name: "benchmark metrics for flow/cytof data"
-  #       software_environment: "py"
-  #       repository:
-  #         url: https://github.com/kaae-2/ob-pipeline-metrics
-  #         commit: 71833ff
-  #       parameters:
-  #         - values: ["--metric", "all"]
-  #       #  - values: ["--metric", "accuracy"]
-  #       #  - values: ["--metric", "precision"]
-  #       #  - values: ["--metric", "recall"]
-  #       #  - values: ["--metric", "f1"]
-  #       #  - values: ["--metric", "f1_score"]
-  #       #  - values: ["--metric", "runtime"]
-  #       #  - values: ["--metric", "overlap"]
-  #       #  - values: ["--metric", "scalability"]
-  #     #  - values: ["--metric", ""] #Template: Add parameters
-  #   inputs:
-  #     - entries:
-  #         - analysis.prediction
-  #         - data.true_labels
-  #   outputs:
-  #     - id: metrics.scores
-  #       path: "{input}/{stage}/{module}/{params}/{dataset}.flow_metrics.json.gz"
+  - id: metrics
+    modules:
+      - id: flow_metrics
+        name: "benchmark metrics for flow/cytof data"
+        software_environment: "py"
+        repository:
+          url: https://github.com/kaae-2/ob-pipeline-metrics
+          commit: 71833ff
+        parameters:
+          - values: ["--metric", "all"]
+        #  - values: ["--metric", "accuracy"]
+        #  - values: ["--metric", "precision"]
+        #  - values: ["--metric", "recall"]
+        #  - values: ["--metric", "f1"]
+        #  - values: ["--metric", "f1_score"]
+        #  - values: ["--metric", "runtime"]
+        #  - values: ["--metric", "overlap"]
+        #  - values: ["--metric", "scalability"]
+      #  - values: ["--metric", ""] #Template: Add parameters
+    inputs:
+      - entries:
+          - analysis.prediction
+          - data.true_labels
+    outputs:
+      - id: metrics.scores
+        path: "{input}/{stage}/{module}/{params}/{dataset}.flow_metrics.json.gz"
