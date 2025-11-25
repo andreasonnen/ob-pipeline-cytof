@@ -17,7 +17,6 @@ dependencies:
       - "fcsparser==0.2.8"
       - "seaborn==0.10.1"
       - "matplotlib==3.8.0"
-      - "pandas==1.1.0"
       - "umap_learn==0.4.6"
       - "hdbscan==0.8.26"
       - "scikit-learn==1.5.2"
