@@ -13,13 +13,13 @@ software_environments:
     conda: envs/py.yml
     envmodule: py
   cran:
-    description: "CRAN's FCPS"
-    conda: envs/fcps.yml
-    envmodule: fcps
+    description: "CRAN R environment"
+    conda: envs/cran.yml
+    envmodule: cran
 metric_collectors:
   - id: plotting
     name: "Single-backend metric collector."
-    software_environment: "fcps"
+    software_environment: "cran"
     repository:
       url: https://github.com/imallona/clustering_report
       commit: bbb9d56
