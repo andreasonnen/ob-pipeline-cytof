@@ -9,3 +9,6 @@ pull:
 
 rerun:
     just pull && just run
+
+push:
+    git add . && git commit -m "update" && git push
