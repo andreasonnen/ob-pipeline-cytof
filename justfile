@@ -6,3 +6,6 @@ run:
 
 pull:
     git pull
+
+rerun:
+    just pull && just run
