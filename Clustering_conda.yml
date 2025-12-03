@@ -24,6 +24,10 @@ software_environments:
     description: "CyAnno module environment"
     conda: envs/cyanno_env.yml
     envmodule: cyanno
+  gatemeclass:
+    description: "GateMeClass R environment"
+    conda: envs/gatemeclass.yml
+    envmodule: gatemeclass
 
 # metric_collectors:
 #   - id: plotting
@@ -108,6 +112,18 @@ stages:
           url: https://github.com/JavierHdCKU/ob-pipeline-cyanno
           commit: d45303799244b31e99a9ef4d8b16bc8fbff8befa
         parameters: []
+
+      - id: gatemeclass
+        name: "GateMeClass statistical gating"
+        software_environment: gatemeclass
+        repository:
+          url: https://github.com/andreasonnen/gatemeclass
+          commit: 08567fb
+        parameters:
+          - values: ["--mode", "train_and_annotate",
+                     "--GMM_parameterization", "V",
+                     "--sampling", "0.1",
+                     "--k", "20"]
 
     outputs:
       - id: analysis.prediction
