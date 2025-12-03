@@ -115,7 +115,7 @@ stages:
 
       - id: gatemeclass
         name: "GateMeClass statistical gating"
-        software_environment: gatemeclass
+        software_environment: cran
         repository:
           url: https://github.com/andreasonnen/gatemeclass
           commit: 08567fb
